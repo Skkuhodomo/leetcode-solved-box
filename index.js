@@ -30,8 +30,8 @@ async function update_gist(leetcode_data) {
       }
     }
   })
-
   console.log("Update Success !!!!!")
+  console.log(content_table)
 }
 
 async function query_leetcode() {
