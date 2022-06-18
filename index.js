@@ -11,13 +11,18 @@ async function update_gist(leetcode_data) {
   const octokit = new Octokit({
     auth: GT_TOKEN
   })
+
+  easy_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count / leetcode_data.data.allQuestionsCount[1].count)*100)
+  medium_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count / leetcode_data.data.allQuestionsCount[2].count)*100)
+  hard_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count / leetcode_data.data.allQuestionsCount[3].count)*100)
+
   content_table = table(
     [
-      [`@${USERNAME}`, `${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🕴`],
+      [`${USERNAME} Total Solved Problem`, `🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
       ['Solved Problem List', '👇'],
-      [`Easy`, `${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count} 🕴`],
-      [`Medium`, `${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count} 🕴`],
-      [`Hard`, `${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count} 🕴`],
+      [`📗 **Easy**`, `![Progress](https://progress-bar.dev/${easy_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}&width=200)`],
+      [`📙 **Medium**`, `![Progress](https://progress-bar.dev/${medium_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}&width=200)`],
+      [`📕 **Hard**`, `![Progress](https://progress-bar.dev/${hard_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}&width=200)`],
     ],
     { align: ['l', 'r'], stringLength: () => 20 }
   );
