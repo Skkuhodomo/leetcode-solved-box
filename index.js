@@ -4,12 +4,12 @@ const table = require("text-table");
 
 const LEETCODE_URL = "https://leetcode.com/graphql/";
 const {
-  GIST_ID, GITHUB_TOKEN, USERNAME,
+  GIST_ID, GT_TOKEN, USERNAME,
 } = process.env;
 
 async function update_gist(leetcode_data) {
   const octokit = new Octokit({
-    auth: GITHUB_TOKEN
+    auth: GT_TOKEN
   })
   content_table = table(
     [
