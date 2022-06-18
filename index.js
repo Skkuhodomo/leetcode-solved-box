@@ -18,13 +18,13 @@ async function update_gist(leetcode_data) {
 
   content_table = table(
     [
-      [`${USERNAME} Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
+      [`Total Solved Problem`, `🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
       ['Solved Problem List 👇'],
-      [`📗 Easy`, `${generateBarChart(easy_percentage, 100)}`],
-      [`📙 Medium`, `${generateBarChart(medium_percentage, 100)}`],
-      [`📕 Hard`, `${generateBarChart(hard_percentage, 100)}`],
+      [`📗 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}] Easy`, `${generateBarChart(easy_percentage, 25)}`],
+      [`📙 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}] Medium`, `${generateBarChart(medium_percentage, 25)}`],
+      [`📕 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}] Hard`, `${generateBarChart(hard_percentage, 25)}`],
     ],
-    { align: ['l', 'c'] }
+    { align: [ 'l', 'l' ] }
   );
 
   await octokit.request('PATCH /gists/{gist_id}', {
