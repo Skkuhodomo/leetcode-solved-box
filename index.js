@@ -20,9 +20,9 @@ async function update_gist(leetcode_data) {
     [
       [`Total Solved Problem`, `🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
       ['Solved Problem List 👇'],
-      [`📗 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}] Easy`, `${generateBarChart(easy_percentage, 25)}`],
-      [`📙 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}] Medium`, `${generateBarChart(medium_percentage, 25)}`],
-      [`📕 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}] Hard`, `${generateBarChart(hard_percentage, 25)}`],
+      [`📗 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}] Easy`, `${generateBarChart(easy_percentage, 18)}`, `${easy_percentage}%`],
+      [`📙 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}] Medium`, `${generateBarChart(medium_percentage, 18)}`, `${medium_percentage}%`],
+      [`📕 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}] Hard`, `${generateBarChart(hard_percentage, 18)}`, `${hard_percentage}%`],
     ],
     { align: [ 'l', 'l' ] }
   );
