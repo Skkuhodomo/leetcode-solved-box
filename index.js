@@ -30,6 +30,8 @@ async function update_gist(leetcode_data) {
       }
     }
   })
+
+  console.log("Update Success !!!!!")
 }
 
 async function query_leetcode() {
