@@ -18,13 +18,13 @@ async function update_gist(leetcode_data) {
 
   content_table = table(
     [
-      [`${USERNAME} Total Solved Problem`, `🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
-      ['Solved Problem List', '👇'],
-      [`📗 **Easy**`, `![Progress](https://progress-bar.dev/${easy_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}&width=200)`],
-      [`📙 **Medium**`, `![Progress](https://progress-bar.dev/${medium_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}&width=200)`],
-      [`📕 **Hard**`, `![Progress](https://progress-bar.dev/${hard_percentage}/?scale=100&title=${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}&width=200)`],
+      [`${USERNAME} Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
+      ['Solved Problem List 👇'],
+      [`📗 Easy`, `${generateBarChart(easy_percentage, 100)}`],
+      [`📙 Medium`, `${generateBarChart(medium_percentage, 100)}`],
+      [`📕 Hard`, `${generateBarChart(hard_percentage, 100)}`],
     ],
-    { align: ['l', 'r'], stringLength: () => 20 }
+    { align: ['l', 'c'] }
   );
 
   await octokit.request('PATCH /gists/{gist_id}', {
@@ -55,5 +55,21 @@ async function query_leetcode() {
 
   await update_gist(result.data)
 };
+
+function generateBarChart (percent, size) {
+  const syms = '░▏▎▍▌▋▊▉█'
+
+  const frac = Math.floor((size * 8 * percent) / 100)
+  const barsFull = Math.floor(frac / 8)
+  if (barsFull >= size) {
+    return syms.substring(8, 9).repeat(size)
+  }
+  const semi = frac % 8
+
+  return [
+    syms.substring(8, 9).repeat(barsFull),
+    syms.substring(semi, semi + 1)
+  ].join('').padEnd(size, syms.substring(0, 1))
+}
 
 query_leetcode()
