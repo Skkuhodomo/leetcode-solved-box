@@ -30,7 +30,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Update
-        uses: Pudding124/leetcode-solved-box@master
+        uses: ./
         env:
           GIST_ID: ${{ secrets.GIST_ID }}
           GT_TOKEN: ${{ secrets.GT_TOKEN }}
