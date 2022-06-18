@@ -1,0 +1,24 @@
+{
+  "name": "leetcode-solved-box",
+  "version": "1.0.0",
+  "description": "Update a pinned gist to show your latest leetcode solved problems",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pudding124/leetcode-solved-box.git"
+  },
+  "author": "Mars_Hsu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pudding124/leetcode-solved-box/issues"
+  },
+  "homepage": "https://github.com/Pudding124/leetcode-solved-box#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "octokit": "^1.8.0",
+    "text-table": "^0.2.0"
+  }
+}
