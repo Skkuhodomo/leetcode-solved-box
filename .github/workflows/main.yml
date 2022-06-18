@@ -25,6 +25,9 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
+      # install packages
+      - run: npm install
+
       # Runs a single command using the runners shell
       - name: Update
         uses: Pudding124/leetcode-solved-box@master
