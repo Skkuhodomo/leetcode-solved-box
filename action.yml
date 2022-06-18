@@ -1,0 +1,9 @@
+name: 'leetcode-solved-box'
+author: "mars_hsu"
+description: 'Update a pinned gist to show your latest leetcode solved problems'
+branding:
+  icon: 'coffee'  
+  color: 'purple'
+runs:
+  using: 'node14'
+  main: 'index.js'
