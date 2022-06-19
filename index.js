@@ -27,9 +27,9 @@ async function update_gist(leetcode_data) {
   content_table = [
     `Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`,
     'Solved Problem List 👇',
-    `📗 ${easy_term} ${generateBarChart(easy_percentage, 20)} ${easy_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
-    `📙 ${medium_term} ${generateBarChart(medium_percentage, 20)} ${medium_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
-    `📕 ${hard_term} ${generateBarChart(hard_percentage, 20)} ${hard_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
+    `📗 ${easy_term} ${generateBarChart(easy_percentage, 17)} ${easy_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
+    `📙 ${medium_term} ${generateBarChart(medium_percentage, 17)} ${medium_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
+    `📕 ${hard_term} ${generateBarChart(hard_percentage, 17)} ${hard_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
   ].join("\n")
 
   await octokit.request('PATCH /gists/{gist_id}', {
