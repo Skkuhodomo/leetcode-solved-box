@@ -12,20 +12,25 @@ async function update_gist(leetcode_data) {
     auth: GT_TOKEN
   })
 
+  easy_term = "Easy".padEnd(10)
+  medium_term = "Medium".padEnd(10)
+  hard_term = "Hard".padEnd(10)
+
   easy_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count / leetcode_data.data.allQuestionsCount[1].count)*100)
   medium_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count / leetcode_data.data.allQuestionsCount[2].count)*100)
   hard_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count / leetcode_data.data.allQuestionsCount[3].count)*100)
 
-  content_table = table(
-    [
-      [`Total Solved Problem`, `🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`],
-      ['Solved Problem List 👇'],
-      [`📗 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}] Easy`, `${generateBarChart(easy_percentage, 19)}`, `${easy_percentage}%`],
-      [`📙 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}] Medium`, `${generateBarChart(medium_percentage, 19)}`, `${medium_percentage}%`],
-      [`📕 [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}] Hard`, `${generateBarChart(hard_percentage, 19)}`, `${hard_percentage}%`],
-    ],
-    { align: [ 'l', 'l' ] }
-  );
+  easy_percentage_term = String(easy_percentage+"%").padEnd(4)
+  medium_percentage_term = String(medium_percentage+"%").padEnd(4)
+  hard_percentage_term = String(hard_percentage+"%").padEnd(4)
+
+  content_table = [
+    `Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`,
+    'Solved Problem List 👇',
+    `📗 ${easy_term} ${generateBarChart(easy_percentage, 20)} ${easy_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
+    `📙 ${medium_term} ${generateBarChart(medium_percentage, 20)} ${medium_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
+    `📕 ${hard_term} ${generateBarChart(hard_percentage, 20)} ${hard_percentage_term} [${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
+  ].join("\n")
 
   await octokit.request('PATCH /gists/{gist_id}', {
     gist_id: GIST_ID,
@@ -56,20 +61,19 @@ async function query_leetcode() {
   await update_gist(result.data)
 };
 
-function generateBarChart (percent, size) {
-  const syms = '░▏▎▍▌▋▊▉█'
+function generateBarChart(percent, size) {
+  const syms = "░▏▎▍▌▋▊▉█";
 
-  const frac = Math.floor((size * 8 * percent) / 100)
-  const barsFull = Math.floor(frac / 8)
+  const frac = Math.floor((size * 8 * percent) / 100);
+  const barsFull = Math.floor(frac / 8);
   if (barsFull >= size) {
-    return syms.substring(8, 9).repeat(size)
+    return syms.substring(8, 9).repeat(size);
   }
-  const semi = frac % 8
+  const semi = frac % 8;
 
-  return [
-    syms.substring(8, 9).repeat(barsFull),
-    syms.substring(semi, semi + 1)
-  ].join('').padEnd(size, syms.substring(0, 1))
+  return [syms.substring(8, 9).repeat(barsFull), syms.substring(semi, semi + 1)]
+    .join("")
+    .padEnd(size, syms.substring(0, 1));
 }
 
 query_leetcode()
