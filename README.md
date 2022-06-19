@@ -15,9 +15,7 @@
 
 ## Overview
 
-Show how many Leetcode problems you have solved. The following details will be displayed in pinned gist:
-
-## Setup
+Show how many Leetcode problems you have solved. 
 
 ### Prep work
 
@@ -37,4 +35,4 @@ Show how many Leetcode problems you have solved. The following details will be d
    - **USERNAME:** The user name of your leetcode name
 
 5. [Pin your gist](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/pinning-items-to-your-profile)
-6. Wait for it to update (the github aciton cron job will run every 3 hours), or you can manually push the repo to trigger the action.
+6. Wait for it to update (the github aciton cron job will run every 6 hours), or you can manually push the repo to trigger the action.
