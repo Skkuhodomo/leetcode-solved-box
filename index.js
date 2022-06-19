@@ -16,9 +16,9 @@ async function update_gist(leetcode_data) {
   medium_term = "Medium".padEnd(10)
   hard_term = "Hard".padEnd(10)
 
-  easy_percentage = (leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count / leetcode_data.data.allQuestionsCount[1].count)*100
-  medium_percentage = (leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count / leetcode_data.data.allQuestionsCount[2].count)*100
-  hard_percentage = (leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count / leetcode_data.data.allQuestionsCount[3].count)*100
+  easy_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count / leetcode_data.data.allQuestionsCount[1].count)*100)
+  medium_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count / leetcode_data.data.allQuestionsCount[2].count)*100)
+  hard_percentage = parseInt((leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count / leetcode_data.data.allQuestionsCount[3].count)*100)
 
   easy_percentage_term = String(parseInt(easy_percentage)+"%").padEnd(5)
   medium_percentage_term = String(parseInt(medium_percentage)+"%").padEnd(5)
