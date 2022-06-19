@@ -26,7 +26,7 @@ async function update_gist(leetcode_data) {
 
   content_table = [
     `Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`,
-    '---Solved Problem List---',
+    '--- Solved Problem List ---',
     `📗 ${easy_term}${generateBarChart(easy_percentage)} ${easy_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
     `📙 ${medium_term}${generateBarChart(medium_percentage)} ${medium_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
     `📕 ${hard_term}${generateBarChart(hard_percentage)} ${hard_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
