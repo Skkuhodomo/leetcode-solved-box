@@ -62,16 +62,16 @@ async function query_leetcode() {
 };
 
 function generateBarChart(percent) {
-  const emoji_list = "🌑🌘🌗🌖🌝";
+  const emoji_list = "🌑🌘🌗🌖🌕";
 
   const full = Math.floor(percent) / 10
   const frac = Math.floor(percent) % 10
 
   if (full >= 10) {
-    return "🌝 ".repeat(10);
+    return "🌕 ".repeat(10);
   }
   
-  bar = "🌝 ".repeat(full)
+  bar = "🌕 ".repeat(full)
   if (frac > 0 && frac <= 3) {
     bar += "🌘 "
   } else if (frac > 3 && frac <= 6) {
