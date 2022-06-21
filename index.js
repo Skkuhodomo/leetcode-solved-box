@@ -12,9 +12,9 @@ async function update_gist(leetcode_data) {
     auth: GT_TOKEN
   })
 
-  easy_term = "Easy".padEnd(10)
-  medium_term = "Medium".padEnd(10)
-  hard_term = "Hard".padEnd(10)
+  easy_term = "Easy".padEnd(7)
+  medium_term = "Medium".padEnd(7)
+  hard_term = "Hard".padEnd(7)
 
   easy_percentage = (leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count / leetcode_data.data.allQuestionsCount[1].count)*100
   medium_percentage = (leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count / leetcode_data.data.allQuestionsCount[2].count)*100
@@ -27,9 +27,9 @@ async function update_gist(leetcode_data) {
   content_table = [
     `Total Solved Problem 🎉 ${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[0].count} 🎉`,
     '--- Solved Problem List ---',
-    `📗 ${easy_term}${generateBarChart(easy_percentage)} ${easy_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
-    `📙 ${medium_term}${generateBarChart(medium_percentage)} ${medium_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
-    `📕 ${hard_term}${generateBarChart(hard_percentage)} ${hard_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
+    `📗 ${easy_term}${generateBarChart(easy_percentage)}${easy_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[1].count}]`,
+    `📙 ${medium_term}${generateBarChart(medium_percentage)}${medium_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[2].count}]`,
+    `📕 ${hard_term}${generateBarChart(hard_percentage)}${hard_percentage_term}[${leetcode_data.data.matchedUser.submitStats.acSubmissionNum[3].count}]`,
   ].join("\n")
 
   await octokit.request('PATCH /gists/{gist_id}', {
@@ -68,19 +68,19 @@ function generateBarChart(percent) {
   const frac = Math.floor(percent) % 10
 
   if (full >= 10) {
-    return "🌝".repeat(10);
+    return "🌝 ".repeat(10);
   }
   
-  bar = "🌝".repeat(full)
+  bar = "🌝 ".repeat(full)
   if (frac > 0 && frac <= 3) {
-    bar += "🌘"
+    bar += "🌘 "
   } else if (frac > 3 && frac <= 6) {
-    bar += "🌗"
+    bar += "🌗 "
   } else if (frac > 6 && frac <= 9) {
-    bar += "🌖"
+    bar += "🌖 "
   }
-  
-  return bar.padEnd(20, "🌑")
+
+  return bar.padEnd(30, "🌑 ")
 }
 
 query_leetcode()
