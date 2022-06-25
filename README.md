@@ -1,5 +1,5 @@
 <p align="center">
-   <img src="https://i.imgur.com/dIHYraR.png" alt="screenshot" width="500">
+   <img src="https://i.imgur.com/EG1iaR3.png" alt="screenshot" width="500">
   <h3 align="center">📌 Leetcode Solved Problem </h3>
 </p>
 

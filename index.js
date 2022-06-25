@@ -48,7 +48,7 @@ async function query_leetcode() {
   const headers = {
     "content-type": "application/json"
   };
-  // Get user's medium data from rss API
+  
   result = await axios.post(LEETCODE_URL, {
     "query": "query userSessionProgress($username: String!) { allQuestionsCount { difficulty count } matchedUser(username: $username) { submitStats { acSubmissionNum { difficulty count submissions } totalSubmissionNum { difficulty count submissions }}}}",
     "variables": {
