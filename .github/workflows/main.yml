@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: '20'
 
-      # install packages
+      # 페키지 다운로드
       - run: npm install
 
       # Runs a single command using the runners shell
